@@ -44,6 +44,6 @@ group :development, :test do
 end
 
 gem 'devise'
-gem 'rack-oauth2'
+gem 'doorkeeper'
 gem 'haml-rails'
 gem 'active_model_serializers'

@@ -21,3 +21,13 @@
 
 en:
   hello: "Hello world"
+  subtitle: A RadioLog user authentication system
+  created_by: "Created by Phitherek_ in 2015."
+  radiolog_tools: This application is a part of the RadioLog Tools.
+  log_out: Log out
+  edit_user_data: Edit user data
+  main:
+    index:
+      user_data: User data
+      callsign: "Callsign:"
+      email: "E-mail:"

@@ -1,0 +1,23 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+    %title RLAuth
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    %header
+      %h1 RLAuth
+      %p= t(:subtitle)
+    - if flash[:notice]
+      .flash.notice
+        = flash[:notice]
+    - if flash[:error]
+      .flash.error
+        = flash[:error]
+    .main
+      = yield
+    %footer
+      %p.created_by= t(:created_by)
+      %p.radiolog= t(:radiolog_tools)
