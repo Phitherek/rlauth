@@ -19,3 +19,4 @@
 *~
 .rvmrc
 database.yml
+config/configuration.yml

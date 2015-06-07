@@ -26,6 +26,7 @@ en:
   radiolog_tools: This application is a part of the RadioLog Tools.
   log_out: Log out
   edit_user_data: Edit user data
+  oauth_info: This application provides an OAuth2 user API. To have your application added to the OAuth2 provider, contact the administrator at %{admin_email}.
   main:
     index:
       user_data: User data
