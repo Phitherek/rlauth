@@ -1,3 +1,3 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :callsign, :email
+  attributes :id, :callsign, :email
 end
