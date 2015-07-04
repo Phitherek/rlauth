@@ -13,12 +13,4 @@ class ApplicationController < ActionController::Base
       devise_parameter_sanitizer.for(:sign_up) << :email
       devise_parameter_sanitizer.for(:account_update) << :email
   end
-
-  def after_sign_in_path_for(resource)
-      if params[:client_id]
-          oauth_authorization_path(client_id: params[:client_id], redirect_uri: params[:redirect_uri], response_type: params[:response_type], state: params[:state])
-      else
-          stored_location_for(resource) || root_path
-      end
-  end
 end

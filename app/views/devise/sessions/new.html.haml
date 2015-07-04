@@ -12,11 +12,6 @@
     .field
       = f.check_box :remember_me
       = f.label :remember_me
-  - if params[:client_id]
-    = hidden_field_tag :client_id, params[:client_id]
-    = hidden_field_tag :redirect_uri, params[:redirect_uri]
-    = hidden_field_tag :response_type, params[:response_type]
-    = hidden_field_tag :code, params[:code]
   .actions
     = f.submit "Log in"
 = render "devise/shared/links"
