@@ -13,4 +13,14 @@ class ApplicationController < ActionController::Base
       devise_parameter_sanitizer.for(:sign_up) << :email
       devise_parameter_sanitizer.for(:account_update) << :email
   end
+
+  def after_sign_in_path_for(resource)
+      if params[:auth_token]
+          t = Doorkeeper::AuthToken.by_token(params[:auth_token])
+          app = t.application
+          oauth_authorization_path(client_id: app.uid, redirect_uri: app.redirect_uri, response_type: "code")
+      else
+          stored_location_for(resource) || root_path
+      end
+  end
 end
