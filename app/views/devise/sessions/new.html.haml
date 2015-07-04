@@ -12,8 +12,11 @@
     .field
       = f.check_box :remember_me
       = f.label :remember_me
-  - if params[:auth_token]
-    = hidden_field_tag :auth_token, value: params[:auth_token]
+  - if params[:client_id]
+    = hidden_field_tag :client_id, value: params[:client_id]
+    = hidden_field_tag :redirect_uri, value: params[:redirect_uri]
+    = hidden_field_tag :response_type, value: params[:response_type]
+    = hidden_field_tag :code, value: params[:code]
   .actions
     = f.submit "Log in"
 = render "devise/shared/links"

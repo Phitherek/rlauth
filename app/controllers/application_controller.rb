@@ -15,10 +15,8 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-      if params[:auth_token]
-          t = Doorkeeper::AuthToken.by_token(params[:auth_token])
-          app = t.application
-          oauth_authorization_path(client_id: app.uid, redirect_uri: app.redirect_uri, response_type: "code")
+      if params[:client_id]
+          oauth_authorization_path(client_id: params[:client_id], redirect_uri: params[:redirect_uri], response_type: params[:response_type], state: params[:state])
       else
           stored_location_for(resource) || root_path
       end
