@@ -13,7 +13,7 @@ class Users::SessionsController < Devise::SessionsController
 
   # DELETE /resource/sign_out
   def destroy
-    AccessToken.find_by_resource_owner_id(current_user.id).each do |at|
+    Doorkeeper::AccessToken.find_by_resource_owner_id(current_user.id).each do |at|
       at.revoke
     end
     super
