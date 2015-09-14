@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :lockable
   validates :email, presence: true, uniqueness: true
   validates :callsign, presence: true, uniqueness: true, length: {minimum: 3}, format: /\A[A-z0-9]{1,3}[0-9]+[A-z]+\z/
+  has_many :altapi_tokens
   def callsign
     self.read_attribute(:callsign).upcase
   end

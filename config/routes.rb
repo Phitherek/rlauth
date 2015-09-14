@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   use_doorkeeper
   devise_for :users, controllers: {sessions: "users/sessions"}
   get "/api/user_data", to: "api#user_data"
+  post "/altapi/login", to: "altapi#login"
+  post "/altapi/user_data", to: "altapi#user_data"
+  post "/altapi/logout", to: "altapi#logout"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,0 +1,2 @@
+module AltapiHelper
+end
