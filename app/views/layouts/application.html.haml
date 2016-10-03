@@ -7,18 +7,25 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    %header
-      %h1 RLAuth
-      %p= t(:subtitle)
-    - if flash[:notice]
-      .flash.notice
-        = flash[:notice]
-    - if flash[:error]
-      .flash.error
-        = flash[:error]
-    .main
-      = yield
-    %footer
-      %p.created_by= t(:created_by)
-      %p.radiolog= t(:radiolog_tools)
-      %p.oauth_info= t(:oauth_info, admin_email: Rlauth::Configuration.admin_email)
+    .container
+      %header
+        .page-header
+          %h1
+            RLAuth
+            %small= t(:subtitle)
+      - if flash[:notice]
+        .flash.notice.alert.alert-info.alert-dismissible{role: 'alert'}
+          %button{type: :button, class: :close, data: {dismiss: :alert}, 'aria-label': 'Close'}
+            %span{'aria-hidden': :true} &times;
+          = flash[:notice]
+      - if flash[:error]
+        .flash.error.alert.alert-danger.alert-dismissible{role: 'alert'}
+          %button{type: :button, class: :close, data: {dismiss: :alert}, 'aria-label': 'Close'}
+            %span{'aria-hidden': :true} &times;
+          = flash[:error]
+      .main
+        = yield
+      %footer
+        %p.created_by= t(:created_by)
+        %p.radiolog= t(:radiolog_tools)
+        %p.oauth_info= t(:oauth_info, admin_email: Rlauth::Configuration.admin_email)

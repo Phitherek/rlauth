@@ -20,3 +20,6 @@
 *#
 .rvmrc
 database.yml
+.idea
+*.iml
+railways.cache

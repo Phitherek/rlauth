@@ -1,35 +1,37 @@
-%h2
-  Edit #{resource_name.to_s.humanize}
-= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-  = devise_error_messages!
-  .field
-    = f.label :callsign
-    %br/
-    = f.text_field :callsign, autofocus: true
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email
-  - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-    %div
-      Currently waiting confirmation for: #{resource.unconfirmed_email}
-  .field
-    = f.label :password
-    %i (leave blank if you don't want to change it)
-    %br/
-    = f.password_field :password, autocomplete: "off"
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "off"
-  .field
-    = f.label :current_password
-    %i (we need your current password to confirm your changes)
-    %br/
-    = f.password_field :current_password, autocomplete: "off"
-  .actions
-    = f.submit "Update"
-%h3 Cancel my account
-%p
-  Unhappy? #{button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}
-= link_to "Back", :back
+.text-center
+  %h2= t('devise.registerable.edit_user_data')
+  .row
+    .col-md-4.col-md-offset-4
+      = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'form-horizontal' }) do |f|
+        = devise_error_messages!
+        .form-group
+          .col-md-12
+            = f.label t('parameters.callsign')
+            = f.text_field :callsign, autofocus: true, class: 'form-control'
+        .form-group
+          .col-md-12
+            = f.label t('parameters.email')
+            = f.email_field :email, class: 'form-control'
+            - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+              %div= t('devise.registerable.confirmation_pending', email: resource.unconfirmed_email)
+        .form-group
+          .col-md-12
+            = f.label t('parameters.password')
+            %i= t('devise.registerable.leave_blank_to_not_change')
+            = f.password_field :password, autocomplete: "off", class: 'form-control'
+        .form-group
+          .col-md-12
+            = f.label t('parameters.password_confirmation')
+            = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control'
+        .form-group
+          .col-md-12
+            = f.label t('parameters.current_password')
+            %i= t('devise.registerable.current_password_needed')
+            = f.password_field :current_password, autocomplete: "off", class: 'form-control'
+        .actions
+          = f.submit t('devise.registerable.update'), class: 'btn btn-default'
+  %h3= t('devise.registerable.cancel_my_account')
+  .cancel_account
+    = t('devise.registerable.unhappy')
+    = button_to t('devise.registerable.cancel_my_account'), registration_path(resource_name), data: { confirm: t('devise.registerable.are_you_sure') }, method: :delete, class: 'btn btn-danger', form_class: 'button_to button_to_inline'
+= link_to t('devise.registerable.back'), :back

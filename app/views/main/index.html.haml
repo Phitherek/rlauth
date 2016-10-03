@@ -1,7 +1,13 @@
 %h2= t(".user_data")
-%ul
-  %li= t(".callsign") + " " + @user.callsign
-  %li= t(".email") + " " + @user.email
+%dl.dl-horizontal
+  %dt= t(".callsign")
+  %dd= @user.callsign
+  %dt= t(".email")
+  %dd= @user.email
 %nav
-  = link_to t(:edit_user_data), edit_user_registration_path
-  = link_to t(:log_out), destroy_user_session_path, method: :delete
+  .row
+    .col-md-12
+      = link_to t(:edit_user_data), edit_user_registration_path
+  .row
+    .col-md-12
+      = link_to t(:log_out), destroy_user_session_path, method: :delete
